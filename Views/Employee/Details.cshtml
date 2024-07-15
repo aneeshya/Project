@@ -1,0 +1,32 @@
+﻿@model EmployeeManager.Models.Employee
+@{
+    ViewData["Title"] = "Employee Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+<div>
+    <hr />
+    <div class="row mb-4">
+       
+        <div class="col-sm-2"><strong>ID:</strong></div>
+        <div class="col-sm-10">@Model.ID</div>
+
+        <div class="col-sm-2"><strong>Name:</strong></div>
+        <div class="col-sm-10">@Model.Name</div>
+
+        <div class="col-sm-2"><strong>Description:</strong></div>
+        <div class="col-sm-10">@Model.Description</div>
+    </div>
+</div>
+
+<div class="position-relative w-25 d-flex justify-content-between">
+    <a href="@Url.Action("Edit", new { id = @Model.ID })" class="btn btn-warning">Edit</a>
+   
+
+    <form asp-action="Index" method="get">
+        <button type="submit" class="btn btn-primary">Back to List</button>
+    </form>
+</div>
+
+
+

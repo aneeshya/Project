@@ -1,0 +1,48 @@
+﻿@model EmployeeManager.Models.Employee
+@{
+    ViewData["Title"] = "Edit Employee";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+   
+</head>
+<body>
+    <h2>Edit Employee</h2>
+    <form asp-action="Edit">
+
+    
+        <input type="hidden" name="ID" value="@Model.ID" />
+
+        <div class="form-group mb-2">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" name="Name" value="@Model.Name" class="form-inline" />
+            
+        </div>
+
+        <div class="form-group mb-2">
+            <label for="Description">Description</label>
+            <input type="text" id="Description" name="Description" value="@Model.Description" class="form-inline" />
+            
+        </div>
+
+        <div class="position-relative w-25 d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary mr-2">Save</button>
+            <a href="/Employee/Index" class="btn btn-secondary">Back to List</a>
+        </div>
+       
+    </form>
+
+    
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+</body>
+</html>

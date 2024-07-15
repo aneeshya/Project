@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EmployeeManager.Models.Employee>
+@{
+    ViewData["Title"] = "Employee List";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<h2>@ViewData["Title"]</h2>
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+@if (TempData["DeleteMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["DeleteMessage"]
+    </div>
+}
+    <form asp-action="Index" method="get" class="form-inline mb-3">
+        <div class="form-group mr-2">
+            <input type="text" class="form-control" name="searchString" placeholder="Search by Name">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ID</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = item.ID })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Details", new { id = item.ID })" class="btn btn-info">Details</a>
+                    <a href="@Url.Action("Delete", new { id = item.ID })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Employee/Create" class="btn btn-primary">Create New</a>
+</body>
+</html>
